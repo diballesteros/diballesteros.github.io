@@ -1,0 +1,106 @@
+body{
+    background: rgb(216,224,222); /* Old browsers */
+}
+
+a {
+    cursor:pointer;
+}
+
+#contain{
+    margin-top: 100px;
+}
+
+#cardLayout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#cardDisplay{
+    display: flex;
+    justify-content: space-around;
+    flex-basis: 33%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    cursor: default;
+}
+
+#movieSummary {
+    position: relative;
+    left: 43%;
+    margin-top: 2%;
+    cursor: default;
+}
+
+#tvSummary{
+    cursor: default;
+}
+
+.navbar-nav { 
+    flex-direction:row !important; 
+}
+.nav-item {
+    margin-right: 5px;
+}
+
+.summary-container{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+.card{
+    cursor: pointer;
+    text-align: center;
+}
+
+.card-hover{
+    opacity: 1;
+    transition: opacity .6;
+}
+
+.card-hover:hover{
+    opacity: 0.4;
+}
+
+.card{
+    font-weight: bold;
+}
+
+.card-img-top{
+    width: 100%;
+    height: 30vw;
+    object-fit: cover;
+}
+
+
+.btn{
+    cursor: pointer;
+}
+
+.validation-text{
+    margin: 10px;
+    color: red;
+}
+
+.search-error{
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+    padding: 10px;
+    margin: auto;
+}
+
+.active{
+    background:rgb(79, 85, 92); 
+}
+
+.list-group {
+    list-style: decimal inside;
+}
+
+.list-group-item {
+    display: list-item;
+}

@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" ng-init="listSeasons()">
+    <a class="navbar-brand" href="#/">Aranda IMDB</a>
+    <form name="backform" class="form-inline my-2 my-lg-0 ml-auto">
+        <button class="btn btn-outline-light backbutton" href="#" ng-click="backToMain()" type="button">Back</button>
+    </form>
+</nav>
+<div class="search-error" ng-model="showSeasonError" ng-If="showSeasonError">{{seasonError}}</div>
+<div class="summary-container">
+    <div class="card border-dark mb-3" id="tvSummary" style="width: 18rem;">
+        <div class="card-header">{{ selectedMediaCard.Title }}</div>
+        <img class="card-img-top" ng-src="{{verifyPoster(selectedMediaCard.Poster)}}" alt="TV Poster">
+        <div class="card-body">
+            <div class="card-title"> {{ selectedMediaCard.Plot }} </div>
+        </div>
+        <div>
+        </div>
+    </div>
+    <div class="container">
+        <h1 class="display-2 text-secondary">Seasons</h1>
+        <nav aria-label="Search List Pages">
+            <ul class="pagination pagination-lg">
+                <li class="page-item" ng-repeat="i in getNumber(seasonCount) track by $index"
+                    ng-click="showSeason($index)" ng-class="{'active': $index === displayedSeason}"><a
+                        class="page-link">{{$index+1}}</a></li>
+            </ul>
+        </nav>
+        <ol class="list-group">
+            <li class="list-group-item" ng-repeat="episode in episodes">{{episode.Title}}</li>
+        </ol>
+    </div>
+</div>

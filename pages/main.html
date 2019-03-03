@@ -1,0 +1,45 @@
+<header scrolling="incrementPage(); searchMedia()">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#/">
+            Aranda IMDB</a>
+        <ul class="navbar-nav mr-auto">
+            <li ng-model="activeDisplay" ng-class="{'active': activeDisplay}" class="nav-item">
+                <a class="nav-link" ng-click="resetMedia(true)">Movies</a>
+            </li>
+            <li ng-model="activeDisplay" ng-class="{'active': !activeDisplay}" class="nav-item">
+                <a class="nav-link" ng-click="resetMedia(false)">TV</a>
+            </li>
+        </ul>
+        </div>
+
+        <span ng-show="searchForm.search.$error.required && searchForm.search.$dirty" class="validation-text">Please
+            enter a movie or series</span>
+        <span ng-show="searchForm.search.$error.pattern" class="validation-text">No special
+            characters!</span>
+        <span ng-show="searchForm.search.$error.maxlength && searchForm.search.$dirty" class="validation-text">Search
+            value too long</span>
+        <form name="searchForm" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" ng-model="search"
+                name="search" ng-pattern="regex" ng-maxlength="200" required>
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit" ng-disabled="searchForm.search.$invalid"
+                ng-click="resetMedia(activeDisplay); searchMedia()">Search</button>
+        </form>
+    </nav>
+</header>
+<div id="contain">
+    <div class="search-error" ng-model="showSearchError" ng-If="showSearchError">{{searchError}}</div>
+    <div id="cardLayout">
+        <div ng-repeat="med in media" id="cardDisplay">
+            <div class="card border-dark mb-3 card-hover" style="width: 18rem;">
+                <img class="card-img-top" ng-src="{{verifyPoster(med.Poster)}}" alt="Poster" data-toggle="tooltip"
+                    data-placement="right" ng-dblclick="showMediaDetails(med)"
+                    title="Rating: {{med.Ratings[0].Value}} Actors: {{threeActors(med.Actors)}}">
+                <div class="card-body">
+                    <div class="card-title"> {{ med.Title }} </div>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

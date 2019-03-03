@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#/">Aranda IMDB</a>
+    <form name="backform" class="form-inline my-2 my-lg-0 ml-auto">
+        <button class="btn btn-outline-light backbutton" href="#" ng-click="backToMain()" type="button">Back</button>
+    </form>
+</nav>
+
+<div class="card border-dark mb-3" id="movieSummary" style="width: 18rem;">
+    <div class="card-header">{{ selectedMediaCard.Title }}</div>
+    <img class="card-img-top" ng-src="{{verifyPoster(selectedMediaCard.Poster)}}" alt="Movie Poster">
+    <div class="card-body">
+        <div class="card-title"> {{ selectedMediaCard.Plot }} </div>
+    </div>
+    <div>
+    </div>
+</div>
