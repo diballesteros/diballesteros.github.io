@@ -20,19 +20,20 @@ myApp.controller('TvSummaryController', ['$scope', '$location', 'searchService',
 
         while (currentSeasonCount <= $scope.seasonCount) {
 
-
             apiListSeasons.Seasons($scope.selectedMediaCard.imdbID, currentSeasonCount).$promise.then(function (resultstwo) {
-                    $scope.seasonList.splice(resultstwo.Season - 1, 0, resultstwo.Episodes); // Validar el orden de las temporadas
-                    if (resultstwo.Season == 1) { // Dejar la primera temporada seleccionada por defecto
-                        $scope.showSeason(0);
-                    }
-                
+                $scope.seasonList.splice(resultstwo.Season - 1, 0, resultstwo.Episodes); // Validar el orden de las temporadas
+                if (resultstwo.Season == 1) { // Dejar la primera temporada seleccionada por defecto
+                    $scope.showSeason(0);
+                }
+
             }).catch(function (error) {
                 $scope.seasonError = "Request limit reached! Refresh the starting page.";
                 $scope.showSeasonError = true;
             })
             currentSeasonCount++;
         }
+
+
     }
 
     $scope.getNumber = function (num) { // Crear un arreglo de numeros igual a numero de temporadas

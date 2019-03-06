@@ -33,14 +33,17 @@ myApp.controller('MainController', ['$scope', 'searchService', '$location', 'api
         });
 
 
-        $scope.searchMedia = function () { // Llamar https://www.omdbapi.com/ para el array de peliculas o series
+        $scope.searchMedia = function (indicator) { // Llamar https://www.omdbapi.com/ para el array de peliculas o series
 
             // Dependiendo de la pestaña elegida, consultar para peliculas o series
             apiSearchByTitle.searchByTitle($scope.activeDisplay ? "movie" : "series", $scope.search, $scope.pageNumber).$promise.then(function (results) {
-                if (results.Response === "False") { // Mostrar Mensaje si no encuentra resultados
+                if (results.Response === "False" && indicator === 0) { // Mostrar Mensaje si no encuentra resultados por busqueda normal
                     $scope.searchError = "No movie or series found!";
                     $scope.showSearchError = true;
-                } else {
+                } else if(results.Response === "False" && indicator === 1){ //Si lllega mostrar todos los resultados por scrolling, salir de la funcion
+                   return;
+                } 
+                else {
                     results.Search.slice(0, 9).forEach(function (i) { // Traer los primeros nueve resultados
                         apiSearchByID.searchByID(i.imdbID).$promise.then(function (resultstwo) { // Llamar el API otra vez pero por ID para obtener detalles de cada serie/pelicula
                             $scope.media.push(resultstwo);

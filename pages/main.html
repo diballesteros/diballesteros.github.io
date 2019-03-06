@@ -1,4 +1,4 @@
-<header scrolling="incrementPage(); searchMedia()">
+<header scrolling="incrementPage(); searchMedia(1)">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="#/">
             Aranda IMDB</a>
@@ -22,7 +22,7 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" ng-model="search"
                 name="search" ng-pattern="regex" ng-maxlength="200" required>
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit" ng-disabled="searchForm.search.$invalid"
-                ng-click="resetMedia(activeDisplay); searchMedia()">Search</button>
+                ng-click="resetMedia(activeDisplay); searchMedia(0)">Search</button>
         </form>
     </nav>
 </header>
